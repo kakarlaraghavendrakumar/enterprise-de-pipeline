@@ -1,0 +1,78 @@
+[2026-11-20T20:24:35.778+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-11-20T20:24:35.841+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: end_to_end_de_pipeline.dbt_transform scheduled__2026-11-19T00:00:00+00:00 [queued]>
+[2026-11-20T20:24:35.855+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: end_to_end_de_pipeline.dbt_transform scheduled__2026-11-19T00:00:00+00:00 [queued]>
+[2026-11-20T20:24:35.857+0000] {taskinstance.py:2306} INFO - Starting attempt 3 of 5
+[2026-11-20T20:24:35.877+0000] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): dbt_transform> on 2026-11-19 00:00:00+00:00
+[2026-11-20T20:24:35.888+0000] {standard_task_runner.py:64} INFO - Started process 1482 to run task
+[2026-11-20T20:24:35.895+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'end_to_end_de_pipeline', 'dbt_transform', 'scheduled__2026-11-19T00:00:00+00:00', '--job-id', '37', '--raw', '--subdir', 'DAGS_FOLDER/end_to_end_pipeline.py', '--cfg-path', '/tmp/tmpzqalejio']
+[2026-11-20T20:24:35.903+0000] {standard_task_runner.py:91} INFO - Job 37: Subtask dbt_transform
+[2026-11-20T20:24:36.073+0000] {task_command.py:426} INFO - Running <TaskInstance: end_to_end_de_pipeline.dbt_transform scheduled__2026-11-19T00:00:00+00:00 [running]> on host 4ddb55bf6810
+[2026-11-20T20:24:36.482+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data_engineering' AIRFLOW_CTX_DAG_ID='end_to_end_de_pipeline' AIRFLOW_CTX_TASK_ID='dbt_transform' AIRFLOW_CTX_EXECUTION_DATE='2026-11-19T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-11-19T00:00:00+00:00'
+[2026-11-20T20:24:36.488+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-11-20T20:24:36.542+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-11-20T20:24:36.554+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'cd /opt/***/dbt_project && dbt run --vars \'{"run_date": "2026-11-19"}\' && dbt snapshot']
+[2026-11-20T20:24:36.602+0000] {subprocess.py:86} INFO - Output:
+[2026-11-20T20:24:40.560+0000] {subprocess.py:93} INFO - [0m20:24:40  Running with dbt=1.12.7
+[2026-11-20T20:24:42.514+0000] {subprocess.py:93} INFO - [0m20:24:42  Registered adapter: snowflake=1.8.3
+[2026-11-20T20:24:42.879+0000] {subprocess.py:93} INFO - [0m20:24:42  Unable to do partial parsing because config vars, config profile, or config target have changed
+[2026-11-20T20:24:45.946+0000] {subprocess.py:93} INFO - [0m20:24:45  [[33mWARNING[0m][MissingArgumentsPropertyInGenericTestDeprecation]: Deprecated
+[2026-11-20T20:24:45.947+0000] {subprocess.py:93} INFO - functionality
+[2026-11-20T20:24:45.949+0000] {subprocess.py:93} INFO - Found top-level arguments to test `accepted_values` defined on 'fct_orders' in
+[2026-11-20T20:24:45.951+0000] {subprocess.py:93} INFO - package 'enterprise_de_pipeline' (models/marts/schema.yml). Arguments to generic
+[2026-11-20T20:24:45.953+0000] {subprocess.py:93} INFO - tests should be nested under the `arguments` property.
+[2026-11-20T20:24:46.878+0000] {subprocess.py:93} INFO - [0m20:24:46  Found 3 models, 1 snapshot, 6 data tests, 1 source, 507 macros
+[2026-11-20T20:24:46.896+0000] {subprocess.py:93} INFO - [0m20:24:46
+[2026-11-20T20:24:46.904+0000] {subprocess.py:93} INFO - [0m20:24:46  Concurrency: 4 threads (target='dev')
+[2026-11-20T20:24:46.908+0000] {subprocess.py:93} INFO - [0m20:24:46
+[2026-11-20T20:24:49.795+0000] {subprocess.py:93} INFO - [0m20:24:49  1 of 3 START sql view model STAGING.stg_orders ................................. [RUN]
+[2026-11-20T20:24:51.118+0000] {subprocess.py:93} INFO - [0m20:24:51  1 of 3 OK created sql view model STAGING.stg_orders ............................ [[32mSUCCESS 1[0m in 1.30s]
+[2026-11-20T20:24:51.151+0000] {subprocess.py:93} INFO - [0m20:24:51  2 of 3 START sql incremental model MARTS.fct_orders ............................ [RUN]
+[2026-11-20T20:24:54.325+0000] {subprocess.py:93} INFO - [0m20:24:54  2 of 3 OK created sql incremental model MARTS.fct_orders ....................... [[32mSUCCESS 1000[0m in 3.16s]
+[2026-11-20T20:24:54.343+0000] {subprocess.py:93} INFO - [0m20:24:54  3 of 3 START sql table model MARTS.dim_customers ............................... [RUN]
+[2026-11-20T20:24:56.555+0000] {subprocess.py:93} INFO - [0m20:24:56  3 of 3 OK created sql table model MARTS.dim_customers .......................... [[32mSUCCESS 1[0m in 2.20s]
+[2026-11-20T20:24:56.581+0000] {subprocess.py:93} INFO - [0m20:24:56
+[2026-11-20T20:24:56.586+0000] {subprocess.py:93} INFO - [0m20:24:56  Finished running 1 incremental model, 1 table model, 1 view model in 0 hours 0 minutes and 9.67 seconds (9.67s).
+[2026-11-20T20:24:56.796+0000] {subprocess.py:93} INFO - [0m20:24:56
+[2026-11-20T20:24:56.799+0000] {subprocess.py:93} INFO - [0m20:24:56  [32mCompleted successfully[0m
+[2026-11-20T20:24:56.803+0000] {subprocess.py:93} INFO - [0m20:24:56
+[2026-11-20T20:24:56.806+0000] {subprocess.py:93} INFO - [0m20:24:56  Done. PASS=3 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=0 TOTAL=3
+[2026-11-20T20:24:56.809+0000] {subprocess.py:93} INFO - [0m20:24:56  [[33mWARNING[0m][DeprecationsSummary]: Deprecated functionality
+[2026-11-20T20:24:56.810+0000] {subprocess.py:93} INFO - Summary of encountered deprecations:
+[2026-11-20T20:24:56.813+0000] {subprocess.py:93} INFO - - MissingArgumentsPropertyInGenericTestDeprecation: 1 occurrence
+[2026-11-20T20:24:56.814+0000] {subprocess.py:93} INFO - To see all deprecation instances instead of just the first occurrence of each,
+[2026-11-20T20:24:56.815+0000] {subprocess.py:93} INFO - run command again with the `--show-all-deprecations` flag. You may also need to
+[2026-11-20T20:24:56.817+0000] {subprocess.py:93} INFO - run with `--no-partial-parse` as some deprecations are only encountered during
+[2026-11-20T20:24:56.818+0000] {subprocess.py:93} INFO - parsing.
+[2026-11-20T20:25:03.062+0000] {subprocess.py:93} INFO - [0m20:25:03  Running with dbt=1.12.7
+[2026-11-20T20:25:04.641+0000] {subprocess.py:93} INFO - [0m20:25:04  Registered adapter: snowflake=1.8.3
+[2026-11-20T20:25:04.996+0000] {subprocess.py:93} INFO - [0m20:25:04  Unable to do partial parsing because config vars, config profile, or config target have changed
+[2026-11-20T20:25:08.311+0000] {subprocess.py:93} INFO - [0m20:25:08  [[33mWARNING[0m][MissingArgumentsPropertyInGenericTestDeprecation]: Deprecated
+[2026-11-20T20:25:08.313+0000] {subprocess.py:93} INFO - functionality
+[2026-11-20T20:25:08.314+0000] {subprocess.py:93} INFO - Found top-level arguments to test `accepted_values` defined on 'fct_orders' in
+[2026-11-20T20:25:08.317+0000] {subprocess.py:93} INFO - package 'enterprise_de_pipeline' (models/marts/schema.yml). Arguments to generic
+[2026-11-20T20:25:08.318+0000] {subprocess.py:93} INFO - tests should be nested under the `arguments` property.
+[2026-11-20T20:25:09.277+0000] {subprocess.py:93} INFO - [0m20:25:09  Found 3 models, 1 snapshot, 6 data tests, 1 source, 507 macros
+[2026-11-20T20:25:09.303+0000] {subprocess.py:93} INFO - [0m20:25:09
+[2026-11-20T20:25:09.308+0000] {subprocess.py:93} INFO - [0m20:25:09  Concurrency: 4 threads (target='dev')
+[2026-11-20T20:25:09.312+0000] {subprocess.py:93} INFO - [0m20:25:09
+[2026-11-20T20:25:12.552+0000] {subprocess.py:93} INFO - [0m20:25:12  1 of 1 START snapshot SNAPSHOTS.orders_snapshot ................................ [RUN]
+[2026-11-20T20:25:16.913+0000] {subprocess.py:93} INFO - [0m20:25:16  1 of 1 OK snapshotted SNAPSHOTS.orders_snapshot ................................ [[32mSUCCESS 0[0m in 4.35s]
+[2026-11-20T20:25:16.939+0000] {subprocess.py:93} INFO - [0m20:25:16
+[2026-11-20T20:25:16.942+0000] {subprocess.py:93} INFO - [0m20:25:16  Finished running 1 snapshot in 0 hours 0 minutes and 7.62 seconds (7.62s).
+[2026-11-20T20:25:17.129+0000] {subprocess.py:93} INFO - [0m20:25:17
+[2026-11-20T20:25:17.132+0000] {subprocess.py:93} INFO - [0m20:25:17  [32mCompleted successfully[0m
+[2026-11-20T20:25:17.135+0000] {subprocess.py:93} INFO - [0m20:25:17
+[2026-11-20T20:25:17.138+0000] {subprocess.py:93} INFO - [0m20:25:17  Done. PASS=1 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=0 TOTAL=1
+[2026-11-20T20:25:17.140+0000] {subprocess.py:93} INFO - [0m20:25:17  [[33mWARNING[0m][DeprecationsSummary]: Deprecated functionality
+[2026-11-20T20:25:17.142+0000] {subprocess.py:93} INFO - Summary of encountered deprecations:
+[2026-11-20T20:25:17.143+0000] {subprocess.py:93} INFO - - MissingArgumentsPropertyInGenericTestDeprecation: 1 occurrence
+[2026-11-20T20:25:17.145+0000] {subprocess.py:93} INFO - To see all deprecation instances instead of just the first occurrence of each,
+[2026-11-20T20:25:17.146+0000] {subprocess.py:93} INFO - run command again with the `--show-all-deprecations` flag. You may also need to
+[2026-11-20T20:25:17.148+0000] {subprocess.py:93} INFO - run with `--no-partial-parse` as some deprecations are only encountered during
+[2026-11-20T20:25:17.150+0000] {subprocess.py:93} INFO - parsing.
+[2026-11-20T20:25:19.596+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2026-11-20T20:25:19.604+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-11-20T20:25:19.702+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=end_to_end_de_pipeline, task_id=dbt_transform, run_id=scheduled__2026-11-19T00:00:00+00:00, execution_date=20261119T000000, start_date=20261120T202435, end_date=20261120T202519
+[2026-11-20T20:25:19.786+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2026-11-20T20:25:19.837+0000] {taskinstance.py:3503} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2026-11-20T20:25:19.842+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

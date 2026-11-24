@@ -1,0 +1,56 @@
+[2026-11-20T19:44:37.936+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-11-20T19:44:38.057+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: end_to_end_de_pipeline.dbt_transform manual__2026-11-20T19:11:25.074303+00:00 [queued]>
+[2026-11-20T19:44:38.093+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: end_to_end_de_pipeline.dbt_transform manual__2026-11-20T19:11:25.074303+00:00 [queued]>
+[2026-11-20T19:44:38.096+0000] {taskinstance.py:2306} INFO - Starting attempt 3 of 3
+[2026-11-20T19:44:38.143+0000] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): dbt_transform> on 2026-11-20 19:11:25.074303+00:00
+[2026-11-20T19:44:38.165+0000] {standard_task_runner.py:64} INFO - Started process 1069 to run task
+[2026-11-20T19:44:38.194+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'end_to_end_de_pipeline', 'dbt_transform', 'manual__2026-11-20T19:11:25.074303+00:00', '--job-id', '30', '--raw', '--subdir', 'DAGS_FOLDER/end_to_end_pipeline.py', '--cfg-path', '/tmp/tmp3qb5kg81']
+[2026-11-20T19:44:38.209+0000] {standard_task_runner.py:91} INFO - Job 30: Subtask dbt_transform
+[2026-11-20T19:44:38.389+0000] {task_command.py:426} INFO - Running <TaskInstance: end_to_end_de_pipeline.dbt_transform manual__2026-11-20T19:11:25.074303+00:00 [running]> on host 4ddb55bf6810
+[2026-11-20T19:44:38.583+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data_engineering' AIRFLOW_CTX_DAG_ID='end_to_end_de_pipeline' AIRFLOW_CTX_TASK_ID='dbt_transform' AIRFLOW_CTX_EXECUTION_DATE='2026-11-20T19:11:25.074303+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-11-20T19:11:25.074303+00:00'
+[2026-11-20T19:44:38.592+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-11-20T19:44:38.622+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-11-20T19:44:38.627+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'cd /opt/***/dbt_project && dbt snapshot && dbt run --vars \'{"run_date": "2026-11-20"}\'']
+[2026-11-20T19:44:38.655+0000] {subprocess.py:86} INFO - Output:
+[2026-11-20T19:44:42.321+0000] {subprocess.py:93} INFO - [0m19:44:42  Running with dbt=1.12.7
+[2026-11-20T19:44:44.443+0000] {subprocess.py:93} INFO - [0m19:44:44  Registered adapter: snowflake=1.8.3
+[2026-11-20T19:44:45.934+0000] {subprocess.py:93} INFO - [0m19:44:45  Found 3 models, 1 snapshot, 6 data tests, 1 source, 506 macros
+[2026-11-20T19:44:45.952+0000] {subprocess.py:93} INFO - [0m19:44:45
+[2026-11-20T19:44:45.959+0000] {subprocess.py:93} INFO - [0m19:44:45  Concurrency: 4 threads (target='dev')
+[2026-11-20T19:44:45.965+0000] {subprocess.py:93} INFO - [0m19:44:45
+[2026-11-20T19:44:49.293+0000] {subprocess.py:93} INFO - [0m19:44:49  1 of 1 START snapshot SNAPSHOTS.orders_snapshot ................................ [RUN]
+[2026-11-20T19:44:50.478+0000] {subprocess.py:93} INFO - [0m19:44:50  1 of 1 ERROR snapshotting SNAPSHOTS.orders_snapshot ............................ [[31mERROR[0m in 1.17s]
+[2026-11-20T19:44:50.509+0000] {subprocess.py:93} INFO - [0m19:44:50
+[2026-11-20T19:44:50.512+0000] {subprocess.py:93} INFO - [0m19:44:50  Finished running 1 snapshot in 0 hours 0 minutes and 4.54 seconds (4.54s).
+[2026-11-20T19:44:50.734+0000] {subprocess.py:93} INFO - [0m19:44:50
+[2026-11-20T19:44:50.740+0000] {subprocess.py:93} INFO - [0m19:44:50  [31mCompleted with 1 error, 0 partial successes, and 0 warnings:[0m
+[2026-11-20T19:44:50.747+0000] {subprocess.py:93} INFO - [0m19:44:50
+[2026-11-20T19:44:50.754+0000] {subprocess.py:93} INFO - [0m19:44:50  [[31mERROR[0m]: in snapshot orders_snapshot (snapshots/orders_snapshot.sql)
+[2026-11-20T19:44:50.758+0000] {subprocess.py:93} INFO - [0m19:44:50    Database Error in snapshot orders_snapshot (snapshots/orders_snapshot.sql)
+[2026-11-20T19:44:50.760+0000] {subprocess.py:93} INFO -   002003 (02000): SQL compilation error:
+[2026-11-20T19:44:50.761+0000] {subprocess.py:93} INFO -   Schema 'ANALYTICS_DB.RAW_STAGING' does not exist or not authorized. Your primary role TRANSFORMER_ROLE or one of your secondary roles must have USAGE or any other privilege granted on SCHEMA ANALYTICS_DB.RAW_STAGING.
+[2026-11-20T19:44:50.765+0000] {subprocess.py:93} INFO - [0m19:44:50
+[2026-11-20T19:44:50.769+0000] {subprocess.py:93} INFO - [0m19:44:50    compiled code at target/compiled/enterprise_de_pipeline/snapshots/orders_snapshot.sql/orders_snapshot.sql
+[2026-11-20T19:44:50.775+0000] {subprocess.py:93} INFO - [0m19:44:50
+[2026-11-20T19:44:50.780+0000] {subprocess.py:93} INFO - [0m19:44:50  Done. PASS=0 WARN=0 ERROR=1 SKIP=0 NO-OP=0 REUSED=0 TOTAL=1
+[2026-11-20T19:44:52.743+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2026-11-20T19:44:52.746+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-11-20T19:44:52.764+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/bash.py", line 243, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2026-11-20T19:44:52.774+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=end_to_end_de_pipeline, task_id=dbt_transform, run_id=manual__2026-11-20T19:11:25.074303+00:00, execution_date=20261120T191125, start_date=20261120T194438, end_date=20261120T194452
+[2026-11-20T19:44:52.794+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 30 for task dbt_transform (Bash command failed. The command returned a non-zero exit code 1.; 1069)
+[2026-11-20T19:44:52.813+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 1
+[2026-11-20T19:44:52.863+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-11-20T19:44:52.872+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

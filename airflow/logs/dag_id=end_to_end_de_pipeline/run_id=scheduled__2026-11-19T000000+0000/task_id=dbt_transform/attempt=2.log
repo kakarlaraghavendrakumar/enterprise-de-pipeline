@@ -1,0 +1,69 @@
+[2026-11-20T19:47:18.414+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-11-20T19:47:18.470+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: end_to_end_de_pipeline.dbt_transform scheduled__2026-11-19T00:00:00+00:00 [queued]>
+[2026-11-20T19:47:18.484+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: end_to_end_de_pipeline.dbt_transform scheduled__2026-11-19T00:00:00+00:00 [queued]>
+[2026-11-20T19:47:18.486+0000] {taskinstance.py:2306} INFO - Starting attempt 2 of 3
+[2026-11-20T19:47:18.504+0000] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): dbt_transform> on 2026-11-19 00:00:00+00:00
+[2026-11-20T19:47:18.524+0000] {standard_task_runner.py:64} INFO - Started process 1172 to run task
+[2026-11-20T19:47:18.534+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'end_to_end_de_pipeline', 'dbt_transform', 'scheduled__2026-11-19T00:00:00+00:00', '--job-id', '33', '--raw', '--subdir', 'DAGS_FOLDER/end_to_end_pipeline.py', '--cfg-path', '/tmp/tmp_3f3f4o8']
+[2026-11-20T19:47:18.549+0000] {standard_task_runner.py:91} INFO - Job 33: Subtask dbt_transform
+[2026-11-20T19:47:18.732+0000] {task_command.py:426} INFO - Running <TaskInstance: end_to_end_de_pipeline.dbt_transform scheduled__2026-11-19T00:00:00+00:00 [running]> on host 4ddb55bf6810
+[2026-11-20T19:47:18.959+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data_engineering' AIRFLOW_CTX_DAG_ID='end_to_end_de_pipeline' AIRFLOW_CTX_TASK_ID='dbt_transform' AIRFLOW_CTX_EXECUTION_DATE='2026-11-19T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-11-19T00:00:00+00:00'
+[2026-11-20T19:47:18.965+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-11-20T19:47:19.012+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-11-20T19:47:19.023+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'cd /opt/***/dbt_project && dbt snapshot && dbt run --vars \'{"run_date": "2026-11-19"}\'']
+[2026-11-20T19:47:19.067+0000] {subprocess.py:86} INFO - Output:
+[2026-11-20T19:47:23.608+0000] {subprocess.py:93} INFO - [0m19:47:23  Running with dbt=1.12.7
+[2026-11-20T19:47:26.078+0000] {subprocess.py:93} INFO - [0m19:47:26  Registered adapter: snowflake=1.8.3
+[2026-11-20T19:47:26.815+0000] {subprocess.py:93} INFO - [0m19:47:26  Unable to do partial parsing because change detected to override macro. Starting full parse.
+[2026-11-20T19:47:28.968+0000] {subprocess.py:93} INFO - [0m19:47:28  [[33mWARNING[0m][MissingArgumentsPropertyInGenericTestDeprecation]: Deprecated
+[2026-11-20T19:47:28.970+0000] {subprocess.py:93} INFO - functionality
+[2026-11-20T19:47:28.971+0000] {subprocess.py:93} INFO - Found top-level arguments to test `accepted_values` defined on 'fct_orders' in
+[2026-11-20T19:47:28.972+0000] {subprocess.py:93} INFO - package 'enterprise_de_pipeline' (models/marts/schema.yml). Arguments to generic
+[2026-11-20T19:47:28.973+0000] {subprocess.py:93} INFO - tests should be nested under the `arguments` property.
+[2026-11-20T19:47:29.902+0000] {subprocess.py:93} INFO - [0m19:47:29  Found 3 models, 1 snapshot, 6 data tests, 1 source, 507 macros
+[2026-11-20T19:47:29.918+0000] {subprocess.py:93} INFO - [0m19:47:29
+[2026-11-20T19:47:29.926+0000] {subprocess.py:93} INFO - [0m19:47:29  Concurrency: 4 threads (target='dev')
+[2026-11-20T19:47:29.933+0000] {subprocess.py:93} INFO - [0m19:47:29
+[2026-11-20T19:47:34.059+0000] {subprocess.py:93} INFO - [0m19:47:34  1 of 1 START snapshot SNAPSHOTS.orders_snapshot ................................ [RUN]
+[2026-11-20T19:47:35.123+0000] {subprocess.py:93} INFO - [0m19:47:35  1 of 1 ERROR snapshotting SNAPSHOTS.orders_snapshot ............................ [[31mERROR[0m in 1.05s]
+[2026-11-20T19:47:35.153+0000] {subprocess.py:93} INFO - [0m19:47:35
+[2026-11-20T19:47:35.156+0000] {subprocess.py:93} INFO - [0m19:47:35  Finished running 1 snapshot in 0 hours 0 minutes and 5.21 seconds (5.21s).
+[2026-11-20T19:47:35.410+0000] {subprocess.py:93} INFO - [0m19:47:35
+[2026-11-20T19:47:35.417+0000] {subprocess.py:93} INFO - [0m19:47:35  [31mCompleted with 1 error, 0 partial successes, and 0 warnings:[0m
+[2026-11-20T19:47:35.423+0000] {subprocess.py:93} INFO - [0m19:47:35
+[2026-11-20T19:47:35.430+0000] {subprocess.py:93} INFO - [0m19:47:35  [[31mERROR[0m]: in snapshot orders_snapshot (snapshots/orders_snapshot.sql)
+[2026-11-20T19:47:35.437+0000] {subprocess.py:93} INFO - [0m19:47:35    Database Error in snapshot orders_snapshot (snapshots/orders_snapshot.sql)
+[2026-11-20T19:47:35.441+0000] {subprocess.py:93} INFO -   002003 (42S02): SQL compilation error:
+[2026-11-20T19:47:35.444+0000] {subprocess.py:93} INFO -   Object 'ANALYTICS_DB.STAGING.STG_ORDERS' does not exist or not authorized. Your primary role TRANSFORMER_ROLE or one of your secondary roles must have at least one privilege granted on TABLE ANALYTICS_DB.STAGING.STG_ORDERS.
+[2026-11-20T19:47:35.449+0000] {subprocess.py:93} INFO - [0m19:47:35
+[2026-11-20T19:47:35.453+0000] {subprocess.py:93} INFO - [0m19:47:35    compiled code at target/compiled/enterprise_de_pipeline/snapshots/orders_snapshot.sql/orders_snapshot.sql
+[2026-11-20T19:47:35.460+0000] {subprocess.py:93} INFO - [0m19:47:35
+[2026-11-20T19:47:35.468+0000] {subprocess.py:93} INFO - [0m19:47:35  Done. PASS=0 WARN=0 ERROR=1 SKIP=0 NO-OP=0 REUSED=0 TOTAL=1
+[2026-11-20T19:47:35.477+0000] {subprocess.py:93} INFO - [0m19:47:35  [[33mWARNING[0m][DeprecationsSummary]: Deprecated functionality
+[2026-11-20T19:47:35.480+0000] {subprocess.py:93} INFO - Summary of encountered deprecations:
+[2026-11-20T19:47:35.484+0000] {subprocess.py:93} INFO - - MissingArgumentsPropertyInGenericTestDeprecation: 1 occurrence
+[2026-11-20T19:47:35.487+0000] {subprocess.py:93} INFO - To see all deprecation instances instead of just the first occurrence of each,
+[2026-11-20T19:47:35.489+0000] {subprocess.py:93} INFO - run command again with the `--show-all-deprecations` flag. You may also need to
+[2026-11-20T19:47:35.491+0000] {subprocess.py:93} INFO - run with `--no-partial-parse` as some deprecations are only encountered during
+[2026-11-20T19:47:35.493+0000] {subprocess.py:93} INFO - parsing.
+[2026-11-20T19:47:37.989+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2026-11-20T19:47:37.999+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-11-20T19:47:38.085+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/bash.py", line 243, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2026-11-20T19:47:38.113+0000] {taskinstance.py:1206} INFO - Marking task as UP_FOR_RETRY. dag_id=end_to_end_de_pipeline, task_id=dbt_transform, run_id=scheduled__2026-11-19T00:00:00+00:00, execution_date=20261119T000000, start_date=20261120T194718, end_date=20261120T194738
+[2026-11-20T19:47:38.206+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 33 for task dbt_transform (Bash command failed. The command returned a non-zero exit code 1.; 1172)
+[2026-11-20T19:47:38.249+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 1
+[2026-11-20T19:47:38.400+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-11-20T19:47:38.405+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

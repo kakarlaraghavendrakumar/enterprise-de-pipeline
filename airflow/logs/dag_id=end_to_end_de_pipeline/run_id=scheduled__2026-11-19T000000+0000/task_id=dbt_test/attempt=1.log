@@ -1,0 +1,44 @@
+[2026-11-20T20:25:22.669+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-11-20T20:25:22.728+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: end_to_end_de_pipeline.dbt_test scheduled__2026-11-19T00:00:00+00:00 [queued]>
+[2026-11-20T20:25:22.747+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: end_to_end_de_pipeline.dbt_test scheduled__2026-11-19T00:00:00+00:00 [queued]>
+[2026-11-20T20:25:22.753+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 3
+[2026-11-20T20:25:22.779+0000] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): dbt_test> on 2026-11-19 00:00:00+00:00
+[2026-11-20T20:25:22.797+0000] {standard_task_runner.py:64} INFO - Started process 1589 to run task
+[2026-11-20T20:25:22.805+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'end_to_end_de_pipeline', 'dbt_test', 'scheduled__2026-11-19T00:00:00+00:00', '--job-id', '38', '--raw', '--subdir', 'DAGS_FOLDER/end_to_end_pipeline.py', '--cfg-path', '/tmp/tmpljiu_j2g']
+[2026-11-20T20:25:22.820+0000] {standard_task_runner.py:91} INFO - Job 38: Subtask dbt_test
+[2026-11-20T20:25:22.964+0000] {task_command.py:426} INFO - Running <TaskInstance: end_to_end_de_pipeline.dbt_test scheduled__2026-11-19T00:00:00+00:00 [running]> on host 4ddb55bf6810
+[2026-11-20T20:25:23.125+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data_engineering' AIRFLOW_CTX_DAG_ID='end_to_end_de_pipeline' AIRFLOW_CTX_TASK_ID='dbt_test' AIRFLOW_CTX_EXECUTION_DATE='2026-11-19T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-11-19T00:00:00+00:00'
+[2026-11-20T20:25:23.129+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-11-20T20:25:23.157+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-11-20T20:25:23.165+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'cd /opt/***/dbt_project && dbt test']
+[2026-11-20T20:25:23.193+0000] {subprocess.py:86} INFO - Output:
+[2026-11-20T20:25:28.026+0000] {subprocess.py:93} INFO - [0m20:25:28  Running with dbt=1.12.7
+[2026-11-20T20:25:29.873+0000] {subprocess.py:93} INFO - [0m20:25:29  Registered adapter: snowflake=1.8.3
+[2026-11-20T20:25:31.890+0000] {subprocess.py:93} INFO - [0m20:25:31  Found 3 models, 1 snapshot, 6 data tests, 1 source, 507 macros
+[2026-11-20T20:25:31.906+0000] {subprocess.py:93} INFO - [0m20:25:31
+[2026-11-20T20:25:31.911+0000] {subprocess.py:93} INFO - [0m20:25:31  Concurrency: 4 threads (target='dev')
+[2026-11-20T20:25:31.918+0000] {subprocess.py:93} INFO - [0m20:25:31
+[2026-11-20T20:25:33.642+0000] {subprocess.py:93} INFO - [0m20:25:33  1 of 6 START test accepted_values_fct_orders_order_status__PLACED__SHIPPED__DELIVERED__CANCELLED  [RUN]
+[2026-11-20T20:25:33.647+0000] {subprocess.py:93} INFO - [0m20:25:33  2 of 6 START test not_null_dim_customers_customer_id ........................... [RUN]
+[2026-11-20T20:25:33.657+0000] {subprocess.py:93} INFO - [0m20:25:33  3 of 6 START test not_null_fct_orders_customer_id .............................. [RUN]
+[2026-11-20T20:25:33.661+0000] {subprocess.py:93} INFO - [0m20:25:33  4 of 6 START test not_null_fct_orders_order_id ................................. [RUN]
+[2026-11-20T20:25:34.945+0000] {subprocess.py:93} INFO - [0m20:25:34  3 of 6 PASS not_null_fct_orders_customer_id .................................... [[32mPASS[0m in 1.26s]
+[2026-11-20T20:25:34.964+0000] {subprocess.py:93} INFO - [0m20:25:34  4 of 6 PASS not_null_fct_orders_order_id ....................................... [[32mPASS[0m in 1.28s]
+[2026-11-20T20:25:34.970+0000] {subprocess.py:93} INFO - [0m20:25:34  1 of 6 PASS accepted_values_fct_orders_order_status__PLACED__SHIPPED__DELIVERED__CANCELLED  [[32mPASS[0m in 1.30s]
+[2026-11-20T20:25:34.973+0000] {subprocess.py:93} INFO - [0m20:25:34  5 of 6 START test unique_dim_customers_customer_id ............................. [RUN]
+[2026-11-20T20:25:34.979+0000] {subprocess.py:93} INFO - [0m20:25:34  2 of 6 PASS not_null_dim_customers_customer_id ................................. [[32mPASS[0m in 1.30s]
+[2026-11-20T20:25:35.008+0000] {subprocess.py:93} INFO - [0m20:25:35  6 of 6 START test unique_fct_orders_order_id ................................... [RUN]
+[2026-11-20T20:25:36.217+0000] {subprocess.py:93} INFO - [0m20:25:36  6 of 6 PASS unique_fct_orders_order_id ......................................... [[32mPASS[0m in 1.18s]
+[2026-11-20T20:25:36.227+0000] {subprocess.py:93} INFO - [0m20:25:36  5 of 6 PASS unique_dim_customers_customer_id ................................... [[32mPASS[0m in 1.24s]
+[2026-11-20T20:25:36.272+0000] {subprocess.py:93} INFO - [0m20:25:36
+[2026-11-20T20:25:36.277+0000] {subprocess.py:93} INFO - [0m20:25:36  Finished running 6 data tests in 0 hours 0 minutes and 4.35 seconds (4.35s).
+[2026-11-20T20:25:36.534+0000] {subprocess.py:93} INFO - [0m20:25:36
+[2026-11-20T20:25:36.538+0000] {subprocess.py:93} INFO - [0m20:25:36  [32mCompleted successfully[0m
+[2026-11-20T20:25:36.540+0000] {subprocess.py:93} INFO - [0m20:25:36
+[2026-11-20T20:25:36.543+0000] {subprocess.py:93} INFO - [0m20:25:36  Done. PASS=6 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=0 TOTAL=6
+[2026-11-20T20:25:38.590+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2026-11-20T20:25:38.594+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-11-20T20:25:38.642+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=end_to_end_de_pipeline, task_id=dbt_test, run_id=scheduled__2026-11-19T00:00:00+00:00, execution_date=20261119T000000, start_date=20261120T202522, end_date=20261120T202538
+[2026-11-20T20:25:38.704+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2026-11-20T20:25:38.734+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-11-20T20:25:38.739+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

@@ -1,0 +1,23 @@
+name: 'enterprise_de_pipeline'
+version: '1.0.0'
+config-version: 2
+
+profile: 'enterprise_de_pipeline'
+
+model-paths: ["models"]
+snapshot-paths: ["snapshots"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  enterprise_de_pipeline:
+    staging:
+      +materialized: view
+      +schema: STAGING
+    marts:
+      +materialized: table
+      +schema: MARTS

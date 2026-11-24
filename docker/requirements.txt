@@ -1,0 +1,5 @@
+pyspark==3.5.1
+dbt-snowflake==1.8.3
+snowflake-connector-python==3.12.1
+faker==28.1.0
+pytest==8.3.2

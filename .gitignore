@@ -1,0 +1,6 @@
+.env
+airflow/logs/
+data/
+__pycache__/
+dbt_project/target/
+dbt_project/dbt_packages/
